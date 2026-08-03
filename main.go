@@ -1,16 +1,18 @@
 package main
 
 import (
+	"bankan_back/config"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// Inicializa o roteador do Gin
+
+	config.ConnectDB()
+
 	r := gin.Default()
 
-	// Cria a rota GET /health
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":  "ok",
@@ -18,6 +20,5 @@ func main() {
 		})
 	})
 
-	// Sobe o servidor na porta 8080
 	r.Run(":8080")
 }
