@@ -2,7 +2,8 @@ package main
 
 import (
 	"bankan_back/config"
-	"net/http"
+	"bankan_back/controllers"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,12 +14,15 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"status":  "ok",
-			"message": "Servidor rodando com sucesso!",
-		})
-	})
+	r.GET("/tasks/:id", controllers.GetTask)
+	r.POST("/tasks", controllers.CreateTask)
+	r.DELETE("/tasks/:id", controllers.DeleteTask)
+	r.PUT("/tasks/:id", controllers.UpdateTask)
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == " " {
+		port = "8080"
+	}
+
+	r.Run(":" + port)
 }
