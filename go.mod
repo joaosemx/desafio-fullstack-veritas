@@ -1,4 +1,4 @@
-module bankan_back
+module kanban_back
 
 go 1.26.5
 
