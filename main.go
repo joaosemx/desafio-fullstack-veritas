@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bankan_back/config"
-	"bankan_back/controllers"
+	"kanban_back/config"
+	"kanban_back/controllers"
 	"os"
 
 	"github.com/gin-gonic/gin"

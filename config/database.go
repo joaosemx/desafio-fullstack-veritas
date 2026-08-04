@@ -1,8 +1,8 @@
 package config
 
 import (
-	"bankan_back/models"
 	"fmt"
+	"kanban_back/models"
 	"log"
 	"os"
 

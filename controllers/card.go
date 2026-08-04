@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"bankan_back/config"
-	"bankan_back/models"
+	"kanban_back/config"
+	"kanban_back/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
