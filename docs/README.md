@@ -74,7 +74,7 @@ Ainda no diretório `backend/`, crie o arquivo `.env` para garantir a resoluçã
 
 ```env
 DB_HOST=127.0.0.1
-DB_PORT=5433
+DB_PORT=5439
 DB_USER=postgres
 DB_PASSWORD=sua_senha_aqui
 DB_NAME=kanbandb

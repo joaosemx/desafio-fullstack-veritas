@@ -7,5 +7,5 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgrespassword
       POSTGRES_DB: kanbandb
-  ports:
-       - "5433:5432"
+    ports:
+       - "5439:5432"
