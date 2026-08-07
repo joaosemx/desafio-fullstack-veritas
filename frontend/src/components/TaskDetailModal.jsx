@@ -180,44 +180,46 @@ export default function TaskDetailModal({ task, isOpen, onClose, onUpdate, onDel
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[#c8a362] font-semibold mb-1 uppercase tracking-wider">
-                  DATA INICIAL *
-                </label>
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className={`w-full bg-[#081214] border ${
-                    errors.startDate ? "border-red-500" : "border-white/10"
-                  } rounded-xl p-3 text-slate-100 focus:outline-none focus:border-[#c8a362]/60`}
-                />
-                {errors.startDate && (
-                  <span className="text-red-400 text-[10px] mt-1 block">
-                    {errors.startDate}
-                  </span>
-                )}
-              </div>
+                <div>
+                  <label className="block text-[#c8a362] font-semibold mb-1 uppercase tracking-wider">
+                    DATA INICIAL *
+                  </label>
+                  <input
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    style={{ colorScheme: "dark" }}
+                    className={`w-full bg-[#081214] border ${
+                      errors.startDate ? "border-red-500" : "border-white/10"
+                    } rounded-xl p-3 text-slate-100 focus:outline-none focus:border-[#c8a362]/60`}
+                  />
+                  {errors.startDate && (
+                    <span className="text-red-400 text-[10px] mt-1 block">
+                      {errors.startDate}
+                    </span>
+                  )}
+                </div>
 
-              <div>
-                <label className="block text-[#c8a362] font-semibold mb-1 uppercase tracking-wider">
-                  DATA LIMITE *
-                </label>
-                <input
-                  type="date"
-                  value={dueDate}
-                  onChange={(e) => setDueDate(e.target.value)}
-                  className={`w-full bg-[#081214] border ${
-                    errors.dueDate ? "border-red-500" : "border-white/10"
-                  } rounded-xl p-3 text-slate-100 focus:outline-none focus:border-[#c8a362]/60`}
-                />
-                {errors.dueDate && (
-                  <span className="text-red-400 text-[10px] mt-1 block">
-                    {errors.dueDate}
-                  </span>
-                )}
+                <div>
+                  <label className="block text-[#c8a362] font-semibold mb-1 uppercase tracking-wider">
+                    DATA LIMITE *
+                  </label>
+                  <input
+                    type="date"
+                    value={dueDate}
+                    onChange={(e) => setDueDate(e.target.value)}
+                    style={{ colorScheme: "dark" }}
+                    className={`w-full bg-[#081214] border ${
+                      errors.dueDate ? "border-red-500" : "border-white/10"
+                    } rounded-xl p-3 text-slate-100 focus:outline-none focus:border-[#c8a362]/60`}
+                  />
+                  {errors.dueDate && (
+                    <span className="text-red-400 text-[10px] mt-1 block">
+                      {errors.dueDate}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
 
             <div className="flex justify-between items-center gap-3 mt-4 pt-4 border-t border-white/10">
               <button

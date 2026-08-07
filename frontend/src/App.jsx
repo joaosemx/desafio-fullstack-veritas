@@ -139,8 +139,11 @@ export default function App() {
 
     if (!taskToUpdate) return;
 
-    const startDate = taskToUpdate.start_date || taskToUpdate.StartDate || "";
-    const dueDate = taskToUpdate.due_date || taskToUpdate.DueDate || "";
+    // .slice(0, 10) corta a data para "YYYY-MM-DD", pois o backend retorna
+    // as datas em RFC3339 (ex: "2026-08-07T00:00:00Z") e o endpoint de
+    // update só aceita o formato curto de data.
+    const startDate = (taskToUpdate.start_date || taskToUpdate.StartDate || "").slice(0, 10);
+    const dueDate = (taskToUpdate.due_date || taskToUpdate.DueDate || "").slice(0, 10);
     const newProgress = calculateProgress(startDate, dueDate, destStatus);
 
     const updatedTasks = tasks.map((t) =>
