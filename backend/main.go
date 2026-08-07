@@ -1,8 +1,9 @@
 package main
 
 import (
-	"kanban_back/config"
-	"kanban_back/controllers"
+	"backend/config"
+	"backend/controllers"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,16 +25,24 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func main() {
+
 	config.ConnectDB()
 
 	r := gin.Default()
 
 	r.Use(CORSMiddleware())
 
-	r.GET("/tasks", controllers.GetTask)
-	r.POST("/tasks", controllers.CreateTask)
-	r.PUT("/tasks/:id", controllers.UpdateTask)
-	r.DELETE("/tasks/:id", controllers.DeleteTask)
+	tasks := r.Group("/tasks")
+	{
+		tasks.GET("", controllers.GetTask)
+		tasks.POST("", controllers.CreateTask)
+		tasks.PUT("/:id", controllers.UpdateTask)
+		tasks.DELETE("/:id", controllers.DeleteTask)
+	}
 
-	r.Run(":8080")
+	log.Println("Servidor rodando na porta 8080...")
+	err := r.Run(":8080")
+	if err != nil {
+		log.Fatal("Erro ao iniciar servidor:", err)
+	}
 }

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"kanban_back/config"
-	"kanban_back/models"
+	"backend/config"
+	"backend/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -14,6 +14,11 @@ func CreateTask(c *gin.Context) {
 
 	if err := c.ShouldBindJSON(&card); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if card.Title == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "O título da tarefa é obrigatório"})
 		return
 	}
 
@@ -48,18 +53,22 @@ func UpdateTask(c *gin.Context) {
 		Status      string `json:"status"`
 		Author      string `json:"author"`
 		Progress    int    `json:"progress"`
+		StartDate   string `json:"start_date"`
+		DueDate     string `json:"due_date"`
 	}
 
-	card.Progress = input.Progress
-
+	// PRIMEIRO fazemos o bind do JSON recebido
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
+	// DEPOIS atribuímos aos campos da struct
 	card.Title = input.Title
 	card.Description = input.Description
 	card.Status = input.Status
+	card.Progress = input.Progress
+
 	if input.Author != "" {
 		card.Author = input.Author
 	}
